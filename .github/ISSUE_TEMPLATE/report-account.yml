@@ -1,0 +1,103 @@
+name: Report an account
+description: Report an account for review by the Instagram Identity Filter maintainers.
+title: "[report] "
+labels: ["report", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping. Before you submit, please check the following.
+
+        **Do not include any of these, ever:**
+        - private messages or DM contents
+        - screenshots of private conversations
+        - raw page source or captured DOM
+        - your Instagram password, session cookies, or any credential
+
+        Reports are **public**. Anything you paste here can be read by anyone,
+        indexed by search engines, and will remain in this repository's history
+        even if the issue is later deleted.
+
+        If your report requires private evidence, **stop and do not submit it here**.
+        This form is only for material you are comfortable publishing.
+
+  - type: input
+    id: identity-account
+    attributes:
+      label: Account handle
+      description: |
+        The exact username of the account you are reporting, including the leading @.
+        Use the handle as it appears on the profile page, not a display name.
+      placeholder: "@example_account"
+    validations:
+      required: true
+
+  - type: input
+    id: profile-url
+    attributes:
+      label: Profile URL
+      description: |
+        The full URL of the account's profile. It must name the same account as the
+        handle above, because a URL that disagrees cannot be verified.
+      placeholder: "https://www.instagram.com/example_account/"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where did you see this content?
+      description: Choose the surface where the account authored the content you are reporting.
+      options:
+        - Feed / home timeline
+        - Profile page
+        - Reels
+        - Explore
+        - Search results
+        - Post detail
+        - Hashtag page
+        - Stories
+        - Direct message inbox
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: public-evidence
+    attributes:
+      label: Public evidence links
+      description: |
+        One link per line, up to five. Only links to content that is **publicly visible
+        without logging in**. Private or login-walled links cannot be reviewed and
+        will be removed.
+      placeholder: |
+        https://www.instagram.com/p/example1/
+        https://www.instagram.com/p/example2/
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Why should this account be reviewed?
+      description: |
+        Optional. A short, factual explanation. Avoid speculation about who someone is.
+        Do not include private information about any person.
+      placeholder: "This account repeatedly reposts other creators' work without credit."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      description: All of these must be checked for the report to be reviewable.
+      options:
+        - label: I confirm I have not included private messages, screenshots, credentials, or raw page source.
+          required: true
+        - label: I confirm the evidence links point to publicly visible content.
+          required: true
+        - label: I understand this report is public and will remain in the repository history.
+          required: true
+        - label: I am reporting content, not making an allegation about a private individual's identity.
+          required: true
